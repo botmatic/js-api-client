@@ -27,7 +27,7 @@ property | type             | description
 -------- | ---------------- | -----------
 success  | boolean          | `true` if the call is successful, `false` in case of error
 error    | string or object | *only* if `success == false` an error description
-*        | any              | *only* if `success == true` function specific returned data
+...      | any              | *only* if `success == true` function specific returned data
 
 ## Contacts API
 The js-api-client module allows you to create, update or delete contacts.  
