@@ -146,11 +146,12 @@ The js-api-client allows you to create one or several properties on your Botmati
 ```json
 {
   "name": "firstname",
-  "type": "text" // Can be "text", "date", or "number"
+  "type": "text"
 }
 ```
+`type` can be `"text"`, `"number"` or `"date"
 
-### `createProperty(property, token) -> Promise<{success, error}>`
+#### `createProperty(property, token) -> Promise<{success, error}>`
 Creates a property on Botmatic.
 
 ##### Example
@@ -165,7 +166,7 @@ jsApiClient.createProperty({name: "firstname", type:"text"}, TOKEN)
 const {success, error} = await jsApiClient.createProperty({name: "firstname", type:"text"}, TOKEN)
 ```
 
-### `createProperties(properties, token) -> Promise<{success, error}>`
+#### `createProperties(properties, token) -> Promise<{success, error}>`
 Creates many properties on Botmatic.
 
 ##### Example
