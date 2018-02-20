@@ -38,7 +38,7 @@ any of these properties.
 See the properties API below and the `js-mapper` module to learn how to create contacts
 you can import into Botmatic
 
-### `createContact(contact, token) -> {success, id, error}`
+#### `createContact(contact, token) -> {success, id, error}`
 Sends a request to the Botmatic API to create a contact.
 The Botmatic id of the created contact is return in the object the Promise resolves to.
 
@@ -55,7 +55,7 @@ const {success, id, error} = await jsApiClient.createContact(contact, token)
 // id is the Botmatic id for the created contact
 ```
 
-### `createContacts(contacts, token) -> {success, contacts, error}`
+#### `createContacts(contacts, token) -> {success, contacts, error}`
 Sends a request to the Botmatic API to create many contacts at once.
 The Botmatic ids of the created contacts are returned in the object the Promise resolves to.
 
@@ -106,7 +106,7 @@ const created_contacts = sent_contacts.map((sent_contact, index) => {
 ```
 
 
-### `updateContact(contact, token) -> {success, error}`
+#### `updateContact(contact, token) -> {success, error}`
 Sends a request to the Botmatic API to update a contact.  
 The contact `id` property must be present and contain an existing id on Botmatic's side.  
 
@@ -122,7 +122,7 @@ jsApiClient.updateContact(contact, token)
 const {success, error} = await jsApiClient.updateContact(contact, token)
 ```
 
-### `deleteContact(id, token) -> {success, error}`
+#### `deleteContact(id, token) -> {success, error}`
 Sends a request to the Botmatic API to delete a contact.  
 The `id` parameter must be an existing id on Botmatic's side.  
 
@@ -146,11 +146,12 @@ The js-api-client allows you to create one or several properties on your Botmati
 ```json
 {
   "name": "firstname",
-  "type": "text" // Can be "text", "date", or "number"
+  "type": "text"
 }
 ```
+`type` can be `"text"`, `"number"` or `"date"
 
-### `createProperty(property, token) -> Promise<{success, error}>`
+#### `createProperty(property, token) -> Promise<{success, error}>`
 Creates a property on Botmatic.
 
 ##### Example
@@ -165,7 +166,7 @@ jsApiClient.createProperty({name: "firstname", type:"text"}, TOKEN)
 const {success, error} = await jsApiClient.createProperty({name: "firstname", type:"text"}, TOKEN)
 ```
 
-### `createProperties(properties, token) -> Promise<{success, error}>`
+#### `createProperties(properties, token) -> Promise<{success, error}>`
 Creates many properties on Botmatic.
 
 ##### Example
