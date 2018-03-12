@@ -22,9 +22,10 @@
  * // Create a set of properties
  * const {success} = await jsApiClient.createProperties(properties)
  */
-require('dotenv').config({
-  path: path.join(__dirname, '/../.env')
-})
+
+// require('dotenv').config({
+//   path: path.join(__dirname, '/../.env')
+// })
 const debug = require('debug')('botmatic:js-api-client')
 const request = require('request')
 
