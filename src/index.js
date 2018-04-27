@@ -43,6 +43,7 @@ const BOTMATIC_BASE_URL = process.env.BOTMATIC_BASE_URL || "https://app.botmatic
 // ENDPOINTS
 const CONTACTS_ENDPOINT = `${BOTMATIC_BASE_URL}/api/contacts`
 const PROPERTIES_ENDPOINT = `${BOTMATIC_BASE_URL}/api/properties`
+const CAMPAIGN_ENPOINT = `${BOTMATIC_BASE_URL}/api/campaigns`
 
 /**
  * Parses the body if necessary
@@ -189,6 +190,17 @@ const createProperties = async (properties, token) => {
   }
 }
 
+const sendEventOnCampaign = async (event_name, contact_ids, token) => {
+  const {success, error} = await sendToBotmatic(METHODS.post, `${CAMPAIGN_ENPOINT}/execute-event`, token, {event_name, contacts: contact_ids})
+
+  if (success) {
+    return {success}
+  }
+  else {
+    return {success, error}
+  }
+}
+
 const init = () => {
   debug("js api client init")
   return {
@@ -248,6 +260,7 @@ const init = () => {
      * @return {Promise<{success: boolean, error: object}>}
      */
     createProperties,
+    sendEventOnCampaign,
     // Not implemented functions
     getContact: () => ({success: false, error: "Not implemented"}),
     getContactByEmail: () => ({success: false, error: "Not implemented"}),
