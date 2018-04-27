@@ -1,5 +1,5 @@
 {
-  "name": "js-api-client",
+  "name": "@botmatic/js-api-client",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",

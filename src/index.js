@@ -143,6 +143,18 @@ const updateContact = async (contact, token) => {
   }
 }
 
+const updateContacts = async (contacts, token) => {
+  debug("update contacts")
+  const {success, error} = await sendToBotmatic(METHODS.patch, `${CONTACTS_ENDPOINT}`, token, contacts)
+
+  if (success) {
+    return {success}
+  }
+  else {
+    return {success, error}
+  }
+}
+
 const deleteContact = async (id, token) => {
   debug("delete contact")
   const {success, error} = await sendToBotmatic(METHODS.delete, `${CONTACTS_ENDPOINT}/${id}`, token)
@@ -204,6 +216,14 @@ const init = () => {
      * @return {Promise<{success: boolean, error: object}>}
      */
     updateContact,
+    /**
+     * Updates many contacts on Botmatic
+     * @member updateContacts
+     * @function
+     * @param {array} contacts
+     * @return {Promise<{success: boolean, error: object}>}
+     */
+    updateContacts,
     /**
      * Deletes a contact on Botmatic
      * @member deleteContact
