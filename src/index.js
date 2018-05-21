@@ -146,7 +146,7 @@ const updateContact = async (contact, token) => {
 
 const updateContacts = async (contacts, token) => {
   debug("update contacts")
-  const {success, error} = await sendToBotmatic(METHODS.patch, `${CONTACTS_ENDPOINT}`, token, contacts)
+  const {success, error} = await sendToBotmatic(METHODS.patch, `${CONTACTS_ENDPOINT}`, token, {contacts})
 
   if (success) {
     return {success}
