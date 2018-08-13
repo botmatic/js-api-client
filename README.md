@@ -4,7 +4,7 @@ It is meant to be used internally by the `js-contact` module, alongside `js-inte
 
 ## Installation
 ```bash
-npm install js-api-client --save
+npm install @botmatic/js-api-client --save
 ```
 
 ## Basic Usage
