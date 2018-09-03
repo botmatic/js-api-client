@@ -203,19 +203,21 @@ const sendEventOnCampaign = async (event_name, contact_ids, token) => {
 }
 
 const getAllBots = async(token) => {
-  return sendToBotmatic(METHODS.get, `${BOT_ENPOINT}?page_size=1000`, token, {name: "CCI"})
-}
-
-const getBot = (id, token) => {
-  return sendToBotmatic(METHODS.get, `${BOT_ENPOINT}/${id}`, token)
-}
-
-const updateBot = async (bot, token) => {
-  debug("update bot", bot.id)
-  const {success, error} = await sendToBotmatic(METHODS.patch, `${BOT_ENPOINT}/${bot.id}`, token, {bot: JSON.stringify(bot), is_draft: true})
+  const {success, error, body} = await sendToBotmatic(METHODS.get, `${BOT_ENPOINT}`, token)
 
   if (success) {
-    return {success}
+    return {success, body}
+  }
+  else {
+    return {success, error}
+  }
+}
+
+const getBot = async(id, token) => {
+  const {success, error, body} = await sendToBotmatic(METHODS.get, `${BOT_ENPOINT}/${id}`, token)
+
+  if (success) {
+    return {success, body}
   }
   else {
     return {success, error}
@@ -285,7 +287,6 @@ const init = () => {
 
     getAllBots,
     getBot,
-    updateBot,
 
     // Not implemented functions
     getContact: () => ({success: false, error: "Not implemented"}),
